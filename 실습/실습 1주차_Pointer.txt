@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define THREE 3
+
+void main(void)
+{
+	int **p;
+	int i=0, j;
+
+	int a[THREE] = {11, 12, 1};
+	int b[THREE] = {40, 60, 4};
+	int c[THREE+1] = {8, 31, 2, 1};
+
+	p = (int(*)[])malloc(sizeof(int*)*THREE-1);
+	p[0] = (int(*))malloc(sizeof(int*)*THREE-1);
+	p[1] = (int(*))malloc(sizeof(int*)*THREE-1);
+	p[2] = (int(*))malloc(sizeof(int*)*THREE);
+
+	p[0] = a;
+	p[1] = b;
+	p[2] = c;
+
+	for(i=0; i<THREE; i++)
+	{
+		if(i==THREE-1)
+		{
+			for(j=0; j<THREE+1; j++)
+			{
+				printf("%d\t", p[i][j]);	
+			}
+		}
+		else
+		{
+			for(j=0; j<THREE; j++)
+			{
+				printf("%d\t", p[i][j]);	
+			}
+		}
+
+		printf("\n");
+	}
+}

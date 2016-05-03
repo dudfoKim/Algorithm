@@ -1,0 +1,42 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+typedef struct list_node* list_pointer;
+typedef struct list_node
+{
+	char data[2];
+	list_pointer link;
+};
+
+void main()
+{
+	int i = 0;
+	list_pointer ptr = NULL;
+	list_pointer one, two, three;
+
+	one = (list_pointer)malloc(sizeof(list_node));
+	two = (list_pointer)malloc(sizeof(list_node));
+	three = (list_pointer)malloc(sizeof(list_node));
+
+	strcpy_s(one->data, 2, "C");
+	one->link = two;
+
+	strcpy_s(two->data, 2, "N");
+	two->link = three;
+
+	strcpy_s(three->data, 2, "U");
+	three->link = NULL;
+
+	ptr = one;
+
+	printf("The List Contains : ");
+	
+	while(ptr!=NULL)
+	{
+		printf("%s", ptr->data);
+		ptr = ptr->link;
+	}
+
+	printf("\n");
+}
